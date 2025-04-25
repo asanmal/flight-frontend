@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  height: 72.5vh;
+}
+
+.card {
+  height: 685px;
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+}
+
+p-splitter {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.frase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #092856;
+}
+
+.frase p {
+  font-family: 'Merriweather', serif;
+  font-size: 2rem;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.panel2 img {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}

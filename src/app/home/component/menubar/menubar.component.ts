@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Menubar } from 'primeng/menubar';
 import { BadgeModule } from 'primeng/badge';
 import { AvatarModule } from 'primeng/avatar';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
 import { Ripple } from 'primeng/ripple';
-import { RouterModule } from '@angular/router';
+import { Menubar } from 'primeng/menubar';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-    selector: 'menubar',
+    selector: 'home-menubar',
     templateUrl: './menubar.component.html',
     standalone: true,
-    imports: [Menubar, BadgeModule, AvatarModule, InputTextModule, Ripple, CommonModule, RouterModule],
+    imports: [Menubar, BadgeModule, AvatarModule, InputTextModule, Ripple, CommonModule, RouterLinkActive, RouterLink],
     styleUrls: ['./menubar.component.css']
 })
 export class MenuBarComponent implements OnInit {

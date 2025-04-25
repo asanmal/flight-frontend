@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MenuBarComponent } from './home/menubar/menubar.component';
-
+import { MenubarModule } from 'primeng/menubar';
+import { MenuBarComponent } from './home/component/menubar/menubar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MenuBarComponent],
+  imports: [RouterOutlet, MenuBarComponent, MenubarModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
-export class AppComponent{}
+export class AppComponent{
+  title = 'flight-frontend';
+}

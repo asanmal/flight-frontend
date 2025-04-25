@@ -1,3 +1,7 @@
+:host .p-inputtext:focus {
+  border-color: #040567;
+}
+
 a span {
     font-size: 20px;
     font-weight: 900;

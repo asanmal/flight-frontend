@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SplitterModule } from 'primeng/splitter';
 
 @Component({
-    selector: 'splitter',
+    selector: 'home-splitter',
     templateUrl: './splitter.component.html',
     standalone: true,
     imports: [SplitterModule],
