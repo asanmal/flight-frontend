@@ -1,0 +1,38 @@
+<div id="Contact">
+    <div id="Contacto">
+        <h2>Contact Us</h2><br/>
+        <p>C. Málaga, 29650 Mijas, Málaga, España</p><br/>
+        <p>asanmal0312&#64;g.educaand.es</p><br/>
+        <p>611452391</p>
+    </div>
+
+
+    <div class="card flex justify-center form-container" [formGroup]="formGroup">
+        <p-iftalabel>
+            <input pInputText id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" autocomplete="off" />
+            <label for="name">Name</label>
+        </p-iftalabel>
+
+        <p-iftalabel>
+            <input pInputText id="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" autocomplete="off" />
+            <label for="email">Email</label>
+        </p-iftalabel>
+
+        <p-iftalabel>
+            <input pInputText id="subject" [(ngModel)]="subject" [ngModelOptions]="{standalone: true}" autocomplete="off" />
+            <label for="subject">Subject</label>
+        </p-iftalabel>
+
+        <p-iftalabel>
+            <label for="message">Message</label>
+            <textarea id="message" pTextarea formControlName="message" rows="5" cols="30"></textarea>
+        </p-iftalabel>
+        
+
+        <div class="card flex justify-center">
+            <p-button label="Send message" styleClass="btn-blue"/>
+        </div>
+    </div>
+</div>
+
+  

@@ -1,0 +1,67 @@
+/*FORMULARIO DE CONTACTO*/
+/*CONTACTO*/
+#Contact{
+    position: relative;
+    margin-top: 12%;
+    width: 100%;
+}
+
+#Contacto{
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    width: 28%;
+    left: 15%;
+    background-color: #092856;
+    color: white;
+    border-radius: 15%;
+    height: 42dvh;
+    padding-top: 5dvh;
+}
+/**********/
+
+/*FORMULARIO*/
+.form-container{
+    position: absolute;
+    top: 10%;    
+    width: 40%;
+    right: 0;
+}
+
+
+.form-container p-iftalabel {
+    margin-bottom: 13px;
+}
+
+.form-container p-iftalabel input{
+    width: 60%;
+    padding: 20px;
+}
+
+.form-container p-iftalabel input:focus{
+    border-color: #092856 !important;
+}
+
+:hover .form-container p-iftalabel label{
+    color: #092856 !important;
+}
+
+.form-container textarea {
+    width: 60%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-container textarea:focus{
+    border-color: #092856 !important;
+}
+
+.p-button.btn-blue {
+    background-color: #092856 !important;
+    border: none !important;
+    color: white !important;
+}
+
+/**************/

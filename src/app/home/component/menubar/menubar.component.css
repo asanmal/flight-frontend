@@ -7,3 +7,10 @@ a span {
     font-weight: 900;
     color: #040567;
   }
+
+.card {
+  position: fixed;
+  width: 99.2%;
+  top: 0;
+  z-index: 1000;
+}
