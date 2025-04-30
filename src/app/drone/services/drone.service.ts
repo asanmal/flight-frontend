@@ -11,7 +11,7 @@ export class DroneService {
   constructor(private readonly http:HttpClient) {}
 
   getDrones(): Observable<Drone[]> {
-    return this.http.get<Drone[]>(this.url);
+    return this.http.get<Drone[]>(`${this.url}/list`);
   }
 
   getDrone(id: number): Observable<Drone> {
