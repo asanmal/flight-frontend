@@ -14,23 +14,23 @@ export class DroneService {
     return this.http.get<Drone[]>(`${this.url}/list`);
   }
 
-  getDrone(id: number): Observable<Drone> {
-    return this.http.get<Drone>(`${this.url}/${id}`);
+  getDrone(matrizId: number): Observable<Drone> {
+    return this.http.get<Drone>(`${this.url}/list/${matrizId}`);
   }
 
-  getDroneByXAndY(x: number, y: number, matrixId: number): Observable<Drone[]> {
-    return this.http.get<Drone[]>(`${this.url}/x/${x}/y/${y}/matrix/${matrixId}`);
+  getDroneByXAndY(x: number, y: number, matrizId: number): Observable<Drone> {
+    return this.http.get<Drone>(`${this.url}/list/${x}/${y}/${matrizId}`);
   }
 
   createDrone(drone: Drone): Observable<Drone> {
-    return this.http.post<Drone>(this.url, drone);
+    return this.http.post<Drone>(`${this.url}/create`, drone);
   }
 
   updateDrone(drone: Drone): Observable<Drone> {
-    return this.http.put<Drone>(`${this.url}/${drone.id}`, drone);
+    return this.http.put<Drone>(`${this.url}/edit/${drone.dronId}`, drone);
   }
 
-  deleteDrone(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}/${id}`);
+  deleteDrone(droneId: number): Observable<void> {
+    return this.http.delete<void>(`${this.url}/delete/${droneId}`);
   }
 }

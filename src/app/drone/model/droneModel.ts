@@ -6,12 +6,12 @@ export enum DroneOrientation {
   }
 
 export interface Drone {
-    id?: number;
-    name: string;
-    model: string;
+    dronId?: number;
+    nombre: string;
+    modelo: string;
     x: number;
     y: number;
-    orientation: DroneOrientation;
-    matrixId: number;
+    orientacion: DroneOrientation;
+    matrizId: number;
   }
   

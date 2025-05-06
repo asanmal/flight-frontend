@@ -1,18 +1,200 @@
 <div class="card">
-    <p-table [columns]="cols" [value]="drones" [scrollable]="true" scrollHeight="400px" [virtualScroll]="true" [virtualScrollItemSize]="46">
+    <!-- FILTROS -->
+    <div class="p-grid p-ai-center p-mb-4">
+      
+      <!-- Filtro por X, Y y Matrix -->
+      <div class="p-col-12 p-md-6">
+        <label>Filtrar por Coordenadas</label>
+        <div class="p-inputgroup">
+          <input
+            type="number"
+            pInputText
+            placeholder="X"
+            [(ngModel)]="filterX"
+            name="filterX"
+          />
+          <input
+            type="number"
+            pInputText
+            placeholder="Y"
+            [(ngModel)]="filterY"
+            name="filterY"
+          />
+          <input
+            type="number"
+            pInputText
+            placeholder="Matrix ID"
+            [(ngModel)]="filterMatrixId"
+            name="filterMatrixId"
+          />
+          <button
+            pButton
+            type="button"
+            icon="pi pi-search"
+            (click)="filterByXY()"
+          ></button>
+        </div>
+      </div>
+  
+      <!-- Limpiar filtros -->
+      <div class="p-col-12 p-md-3 text-right">
+        <button
+          pButton
+          type="button"
+          label="Limpiar"
+          icon="pi pi-filter-slash"
+          (click)="clearFilters()"
+        ></button>
+      </div>
+    </div>
+  
+    <!-- TABLA DE DRONES -->
+    <div class="box-table">
+      <p-table
+        [columns]="cols"
+        [value]="drones"
+        [scrollable]="true"
+        scrollHeight="250px"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="46"
+      >
         <ng-template #header let-columns>
-            <tr>
-                <th *ngFor="let col of columns" style="width: 20%;" scope="row">
-                    {{ col.header }}
-                </th>
-            </tr>
+          <tr>
+            <th
+              *ngFor="let col of columns"
+              style="width: 13%;"
+              scope="row"
+            >
+              {{ col.header }}
+            </th>
+          </tr>
         </ng-template>
         <ng-template #body let-rowData let-rowIndex="rowIndex" let-columns="columns">
-            <tr style="height:46px">
-                <td *ngFor="let col of columns">
-                    {{ rowData[col.field] }}
-                </td>
-            </tr>
+          <tr style="height:46px">
+            <td *ngFor="let col of columns">
+              <ng-container *ngIf="col.field !== 'action'; else actionButtons">
+                {{ rowData[col.field] }}
+              </ng-container>
+              <ng-template #actionButtons>
+                <div class="flex gap-2 justify-center items-center">
+                  <p-button
+                    class="edit-btn"
+                    icon="pi pi-pencil"
+                    styleClass="p-button-sm"
+                    (onClick)="openEditDialog(rowData)"
+                  ></p-button>
+                  <p-button
+                    class="delete-btn"
+                    icon="pi pi-trash"
+                    styleClass="p-button-danger p-button-sm"
+                    (onClick)="onDeleteDrone(rowData)"
+                  ></p-button>
+                </div>
+              </ng-template>
+            </td>
+          </tr>
         </ng-template>
-    </p-table>
-</div>
+      </p-table>
+    </div>
+  
+    <!-- DIALOGO CREAR / EDITAR -->
+    <p-dialog
+      header="{{ isNew ? 'Crear dron' : 'Editar dron' }}"
+      [(visible)]="displayDialog"
+      [modal]="true"
+      [closable]="false"
+      [style]="{ width: '400px' }"
+    >
+      <form (ngSubmit)="onSubmitDrone()">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="nombre">Name</label>
+            <input
+              id="nombre"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.nombre"
+              name="nombre"
+            />
+          </div>
+          <div class="p-field">
+            <label for="modelo">Model</label>
+            <input
+              id="modelo"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.modelo"
+              name="modelo"
+            />
+          </div>
+          <div class="p-field">
+            <label for="x">X</label>
+            <input
+              id="x"
+              type="number"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.x"
+              name="x"
+            />
+          </div>
+          <div class="p-field">
+            <label for="y">Y</label>
+            <input
+              id="y"
+              type="number"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.y"
+              name="y"
+            />
+          </div>
+          <div class="p-field">
+            <label for="orientacion">Orientation</label>
+            <input
+              id="orientacion"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.orientacion"
+              name="orientacion"
+            />
+          </div>
+          <div class="p-field">
+            <label for="matrizId">Matrix ID</label>
+            <input
+              id="matrizId"
+              type="number"
+              pInputText
+              required
+              [(ngModel)]="selectedDrone.matrizId"
+              name="matrizId"
+            />
+          </div>
+        </div>
+        <div class="p-dialog-footer">
+          <p-button
+            label="{{ isNew ? 'Crear' : 'Guardar' }}"
+            type="submit"
+            icon="pi"
+            [iconPos]="'left'"
+            [icon]="isNew ? 'pi pi-plus' : 'pi pi-check'"
+          ></p-button>
+          <p-button
+            label="Cancelar"
+            icon="pi pi-times"
+            (onClick)="closeDialog()"
+          ></p-button>
+        </div>
+      </form>
+    </p-dialog>
+  </div>
+  
+  
+  <div class="card flex justify-center">
+    <p-button
+      label="Create drone"
+      styleClass="dark-blue-button p-button-sm"
+      (onClick)="onCreateDrone()"
+    ></p-button>
+  </div>
+  
